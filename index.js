@@ -26,7 +26,7 @@ function requestUserRepos(username){
     const url = `https://api.github.com/repos/${username}/Treasury-system-v2/contents/webpage/transaction-files`;
     // Replace -username- with your GitHub username, -repo- with the repository name, and then :path with a path to the file or folder you want to get the content of (leave blank to ge all files of the repository)
 
-    xhr.open('GET', URL, true);
+    xhr.open('GET', url, true);
 
     xhr.onload = function() {
         const data = JSON.parse(this.response);
@@ -45,11 +45,9 @@ function requestUserRepos(username){
         
             // Create the html markup for each li
             li.innerHTML = (`
-                <p><strong>Repo:</strong> ${data[i].name}</p>
-                <p><strong>Description:</strong> ${data[i].path}</p>
-                <p><strong>URL:</strong> <a href="${data[i].html_url}">${data[i].html_url}</a></p>
+                <p><strong>Project:</strong> <a href="${data[i].html_url}">${data[i].name.replace(/\..+$/, '')}</a></p>
             `);
-            
+            //x = x.replace(/\..+$/, '');
             // Append each li to the ul
             ul.appendChild(li);
         
