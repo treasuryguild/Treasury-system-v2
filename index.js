@@ -45,7 +45,7 @@ function requestUserRepos(username){
         
             // Create the html markup for each li
             li.innerHTML = (`
-                <p><strong>Project:</strong> <a href="${data[i].html_url}">${data[i].name.replace(/\..+$/, '')}</a></p>
+                <p><strong>Project:</strong> <a href="${data[i].path}">${data[i].name.replace(/\..+$/, '')}</a></p>
             `);
             //x = x.replace(/\..+$/, '');
             // Append each li to the ul
