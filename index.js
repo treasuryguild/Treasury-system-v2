@@ -41,7 +41,7 @@ function requestUserRepos(username){
             let li = document.createElement('li');
             
             // Add Bootstrap list item class to each li
-            li.classList.add('list-group-item')
+            //li.classList.add('list-group-item')
         
             // Create the html markup for each li
             li.innerHTML = (`
