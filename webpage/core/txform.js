@@ -17,7 +17,7 @@ let b5 = 250.183 * 5
 
     // Create new XMLHttpRequest object
     const xhr = new XMLHttpRequest();
-    const url = `https://api.github.com/repos/treasuryguild/Treasury-system-v2/contents/webpage/transaction-files`;
+    const url = `https://api.github.com/repos/treasuryguild/Treasury-system-v2/contents/Transactions/Community-Governance-Oversight/Fund7/Community-Governance-Oversight/Meetings`;
     // Replace -username- with your GitHub username, -repo- with the repository name, and then :path with a path to the file or folder you want to get the content of (leave blank to ge all files of the repository)
 
     xhr.open('GET', url, true);
@@ -26,11 +26,14 @@ let b5 = 250.183 * 5
         const data = JSON.parse(this.response);
         // Loop over each object in data array
         for (let i in data) {
-            b1 = b1 + data[i].size
-            b2 = b2 + data[i].size
-            b3 = b3 + data[i].size
-            b4 = b4 + data[i].size
-            b5 = b5 + data[i].size
+            xhr.open('GET', data[i].download_url, true);
+            xhr.onload = function() {
+              const data2 = JSON.parse(this.response);
+              b1 = b1 + data2.ada
+              console.log(data2.ada);
+            }
+            xhr.send();
+            
         }
 
     }
