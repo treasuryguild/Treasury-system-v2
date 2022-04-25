@@ -1,29 +1,52 @@
+let propEl = document.getElementById("prop")
 let saveEl = document.getElementById("save-el")
 let saveEl2 = document.getElementById("save-el2")
 let balEl = document.getElementById("bal-el")
 
-let gahEl = document.getElementById("gah-el")
-let caEl = document.getElementById("ca-el")
-let fpEl = document.getElementById("fp-el")
-let tamEl = document.getElementById("tam-el")
-let spoEl = document.getElementById("spo-el")
-let ucostEl = document.getElementById("ucost-el")
+let b1El = document.getElementById("b1")
+let b2El = document.getElementById("b2")
+let b3El = document.getElementById("b3")
+let b4El = document.getElementById("b4")
+let b5El = document.getElementById("b5")
+
+let b1 = 0
+let b2 = 0
+let b3 = 291.032265 * 6 + 256.962177 + 34.252353 + 223.184 * 7
+let b4 = 555.555 + 555.555 + 555.555
+let b5 = 250.183 * 5
+
+    // Create new XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+    const url = `https://api.github.com/repos/treasuryguild/Treasury-system-v2/contents/webpage/transaction-files`;
+    // Replace -username- with your GitHub username, -repo- with the repository name, and then :path with a path to the file or folder you want to get the content of (leave blank to ge all files of the repository)
+
+    xhr.open('GET', url, true);
+
+    xhr.onload = function() {
+        const data = JSON.parse(this.response);
+        // Loop over each object in data array
+        for (let i in data) {
+            b1 = b1 + data[i].size
+            b2 = b2 + data[i].size
+            b3 = b3 + data[i].size
+            b4 = b4 + data[i].size
+            b5 = b5 + data[i].size
+        }
+
+    }
+    
+    // Send the request to the server
+    xhr.send();
+    
+
 let percEl = 0
 let percEl2 = 0
 let count = 0
-let gah = 0
-let ca = 0
-let fp = 291.032265 * 6 + 256.962177 + 34.252353 + 223.184 * 7
-let tam = 555.555 + 555.555 + 555.555
-let spo = 250.183 * 5
 let prop = 37500.00  
 let ucosts = 0    // aggregated unexpected cost expenses
 let unCost = 0  //amount allocated 2500 USD
 
-const outgoing = gah + ca + fp + tam + spo + ucosts
-
-console.log(gahEl)
-console.log(saveEl)
+const outgoing = b1 + b2 + b3 + b4 + b5 + ucosts
 
 const getBalance = () => {
     axios.get('https://pool.pm/wallet/addr1qywhw76pn043rfu53eujfy7t6f52aef565z5jjrzx9kwva3tdl56g3r0jsp6zcdfzf4l6ysdz9u232z5mp28swllseesste93q')
@@ -34,28 +57,28 @@ const getBalance = () => {
      console.log(balance);
      saveEl.textContent = "₳ " + balance
      saveEl2.textContent = "₳ " + wBalance
-     gahEl.textContent = "₳ " + (balance/5 - gah - uCost).toFixed(2)
-     caEl.textContent = "₳ " + (balance/5 - ca - uCost).toFixed(2)
-     fpEl.textContent = "₳ " + (balance/5 - fp - uCost).toFixed(2)
-     tamEl.textContent = "₳ " + (balance/5 - tam - uCost).toFixed(2)
-     spoEl.textContent = "₳ " + (balance/5 - spo - uCost).toFixed(2)
+     b1El.textContent = "₳ " + (balance/5 - b1 - uCost).toFixed(2)
+     b2El.textContent = "₳ " + (balance/5 - b2 - uCost).toFixed(2)
+     b3El.textContent = "₳ " + (balance/5 - b3 - uCost).toFixed(2)
+     b4El.textContent = "₳ " + (balance/5 - b4 - uCost).toFixed(2)
+     b5El.textContent = "₳ " + (balance/5 - b5 - uCost).toFixed(2)
      balEl.textContent = "₳ " + prop.toFixed(2)
      let perc = balance/37500*100
      let perc2 = wBalance/37500*100
      percEl2 = (perc2).toFixed(2)
      percEl = (perc).toFixed(2)
-     gahEl2 = ((balance/5 - gah - uCost)/(balance/5 - uCost)*100).toFixed(2)
-     caEl2 = ((balance/5 - ca - uCost)/(balance/5 - uCost)*100).toFixed(2)
-     fpEl2 = ((balance/5 - fp - uCost)/(balance/5 - uCost)*100).toFixed(2)
-     tamEl2 = ((balance/5 - tam - uCost)/(balance/5 - uCost)*100).toFixed(2)
-     spoEl2 = ((balance/5 - spo - uCost)/(balance/5 - uCost)*100).toFixed(2)
+     b1El2 = ((balance/5 - b1 - uCost)/(balance/5 - uCost)*100).toFixed(2)
+     b2El2 = ((balance/5 - b2 - uCost)/(balance/5 - uCost)*100).toFixed(2)
+     b3El2 = ((balance/5 - b3 - uCost)/(balance/5 - uCost)*100).toFixed(2)
+     b4El2 = ((balance/5 - b4 - uCost)/(balance/5 - uCost)*100).toFixed(2)
+     b5El2 = ((balance/5 - b5 - uCost)/(balance/5 - uCost)*100).toFixed(2)
      document.getElementById("save-el").style.width = percEl+"%"
      document.getElementById("save-el2").style.width = percEl2+"%"
-     document.getElementById("gah-el").style.width = gahEl2+"%"
-     document.getElementById("ca-el").style.width = caEl2+"%"
-     document.getElementById("fp-el").style.width = fpEl2+"%"
-     document.getElementById("tam-el").style.width = tamEl2+"%"
-     document.getElementById("spo-el").style.width = spoEl2+"%"
+     document.getElementById("b1").style.width = b1El2+"%"
+     document.getElementById("b2").style.width = b2El2+"%"
+     document.getElementById("b3").style.width = b3El2+"%"
+     document.getElementById("b4").style.width = b4El2+"%"
+     document.getElementById("b5").style.width = b5El2+"%"
    })
     .catch(error => console.error(error));
    };
