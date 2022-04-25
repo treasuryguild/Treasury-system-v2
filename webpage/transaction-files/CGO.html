@@ -5,13 +5,115 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../core/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <div class='cardstop'>Community Governance Oversight Transaction Form</div>
+    <div class='cardstop'>
+        Community Governance Oversight Transaction Form
+    </div>
+    <div class='main'>
+        <button onclick="location.href='../../index.html';"><a>Home</a></button>
+        <button onclick="location.href='../core/newproposal.html';"><a>New Proposal</a></button>
+    </div>
     <article>  
-        <div class='main'> 
-        
+        <div class='main'>
+        <form class="testing">
+            <div class="section_widgets">
+                <div class="graph_widget">
+                <a name="circle-groups"></a>
+                <h3 class="graph_title">Funds</h3>
+                <div class="graph">
+                <div class="graph_item blue">
+                <span class="graph_item_title">
+                <span class="title">Proposal Funds</span>
+                </span>
+                <span class="graph_item_value">
+                <span class="value" id="bal-el" style="width: 100%;">₳37500</span>
+                </span>
+                </div>
+                <div class="graph_item blue">
+                <span class="graph_item_title">
+                <span class="title">Received from IOG</span>
+                </span>
+                <span class="graph_item_value">
+                <span class="value" id="save-el"></span>               
+                </span>
+                </div>
+                <div class="graph_item blue">
+                <span class="graph_item_title">
+                <span class="title">Wallet Balance</span>
+                </span>
+                <span class="graph_item_value">
+                <span class="value" id="save-el2"></span>
+                </span>
+                </div>
+                <br>
+            <h3 class="graph_title">Available to Circle Reps</h3>
+            <div class="graph_item green">
+            <span class="graph_item_title">
+            <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20General%20ADA%20Holders%22%20created%3A%3E2022-03-01" target="_blank">
+            <span class="title">General ADA Holders</span>
+            </a>
+            </span>
+            <span class="graph_item_value">
+            <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20General%20ADA%20Holders%22%20created%3A%3E2022-03-01" target="_blank">
+            <span class="value" id="gah-el"></span>
+            </a>
+            </span>
+            </div>
+            <div class="graph_item green">
+            <span class="graph_item_title">
+            <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Community%20Advisors%22%20created%3A%3E2022-03-01" target="_blank">
+            <span class="title">Community Advisors</span>
+            </a>
+            </span>
+            <span class="graph_item_value">
+            <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Community%20Advisors%22%20created%3A%3E2022-03-01" target="_blank">
+            <span class="value" id="ca-el"></span>
+            </a>
+            </span>
+            </div>
+            <div class="graph_item green">
+            <span class="graph_item_title">
+            <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Funded%20Proposers%22%20created%3A%3E2022-03-01" target="_blank">
+            <span class="title">Funded Proposers</span>
+            </a>
+            </span>
+            <span class="graph_item_value">
+            <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Funded%20Proposers%22%20created%3A%3E2022-03-01" target="_blank">
+            <span class="value" id="fp-el"></span>
+            </a>
+            </span>
+            </div>
+            <div class="graph_item green">
+                <span class="graph_item_title">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Toolmakers%20and%20Maintainers%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="title">Toolmakers and Maintainers</span>
+                </a>
+                </span>
+                <span class="graph_item_value">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Toolmakers%20and%20Maintainers%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="value" id="tam-el"></span>
+                </a>
+                </span>
+                </div>
+                <div class="graph_item green">
+                <span class="graph_item_title">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Stake%20Pool%20Operators%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="title">Stake Pool Operators</span>
+                </a>
+                </span>
+                <span class="graph_item_value">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Stake%20Pool%20Operators%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="value" id="spo-el"></span>
+                </a>
+                </span>
+                </div>
+            </div>
+            </div>
+            </form>
+        </div> 
         <form class='testing'>
             <div class = 'form'>
                 <select class = 'dropd2' id = 'fund'>
