@@ -1,11 +1,12 @@
+let saveEl = document.getElementById("save-el")
+let saveEl2 = document.getElementById("save-el2")
+let balEl = document.getElementById("bal-el")
+
 let gahEl = document.getElementById("gah-el")
 let caEl = document.getElementById("ca-el")
 let fpEl = document.getElementById("fp-el")
 let tamEl = document.getElementById("tam-el")
 let spoEl = document.getElementById("spo-el")
-let saveEl = document.getElementById("save-el")
-let saveEl2 = document.getElementById("save-el2")
-let balEl = document.getElementById("bal-el")
 let ucostEl = document.getElementById("ucost-el")
 let percEl = 0
 let percEl2 = 0
