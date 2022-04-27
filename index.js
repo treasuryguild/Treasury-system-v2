@@ -16,15 +16,11 @@
     
             // Create variable that will create li's to be added to ul
             let li = document.createElement('div');
-            
-            // Add Bootstrap list item class to each li
-            //li.classList.add('list-group-item')
         
             // Create the html markup for each li
             li.innerHTML = (`
                 <button onclick="location.href='${data[i].path}';">${data[i].name.replace(/\..+$/, '')}</button>
             `);
-            //x = x.replace(/\..+$/, '');
             // Append each li to the ul
             ul.appendChild(li);
         

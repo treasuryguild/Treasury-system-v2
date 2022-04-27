@@ -1,4 +1,6 @@
-let propEl = document.getElementById("prop")
+let poolEl = document.getElementById("pool")
+let projectEl = document.getElementById("project")
+let fundEl = document.getElementById("fund")
 let saveEl = document.getElementById("save-el")
 let saveEl2 = document.getElementById("save-el2")
 let balEl = document.getElementById("bal-el")
@@ -9,39 +11,69 @@ let b3El = document.getElementById("b3")
 let b4El = document.getElementById("b4")
 let b5El = document.getElementById("b5")
 
-let b1 = 0
+let t1El = document.getElementById("t1")
+
+const bi = []
+var b1 = 0
 let b2 = 0
 let b3 = 291.032265 * 6 + 256.962177 + 34.252353 + 223.184 * 7
 let b4 = 555.555 + 555.555 + 555.555
 let b5 = 250.183 * 5
 
+function getJSON(url) {
+  return new Promise( (resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState < 4) {
+        // The XHR request hasn't completed yet, so I'm just going to return here.
+        return;
+      }
+
+      if (xhr.status !== 200) {
+        // The Status code of the request is NOT 200, so it must have failed in some way. Reject the promise
+        reject(xhr.response);
+      }
+      if (xhr.readyState === 4) {
+        // The readyState of the request is '4', which means its done.
+        // Parse the response into JSON format and resolve the promise
+        resolve(JSON.parse(xhr.response));
+      }
+    }
+    xhr.send();
+  });
+}
+
     // Create new XMLHttpRequest object
     const xhr = new XMLHttpRequest();
-    const url = `https://api.github.com/repos/treasuryguild/Treasury-system-v2/contents/Transactions/Community-Governance-Oversight/Fund7/Community-Governance-Oversight/Meetings`;
+    const url = `https://api.github.com/repos/treasuryguild/Treasury-system-v2/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}/${t1El.innerText}`;
     // Replace -username- with your GitHub username, -repo- with the repository name, and then :path with a path to the file or folder you want to get the content of (leave blank to ge all files of the repository)
 
     xhr.open('GET', url, true);
 
     xhr.onload = function() {
         const data = JSON.parse(this.response);
+        
         // Loop over each object in data array
         for (let i in data) {
-            xhr.open('GET', data[i].download_url, true);
-            xhr.onload = function() {
-              const data2 = JSON.parse(this.response);
-              b1 = b1 + data2.ada
-              console.log(data2.ada);
-            }
-            xhr.send();
+          getJSON(data[i].download_url)
+          .then( data2 => {
+            b1 = b1 + parseInt(data2.ada)
+            bi.push(data2.ada);
+            console.log(data2);
             
+            // => Data from github!
+          }).catch( error => {
+            throw error; // Oh no, something bad happened!
+          });   
         }
-
     }
     
     // Send the request to the server
     xhr.send();
-    
-
+console.log(fundEl.innerText);
+console.log(bi);
 let percEl = 0
 let percEl2 = 0
 let count = 0
