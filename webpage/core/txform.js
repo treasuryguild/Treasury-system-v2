@@ -134,7 +134,7 @@ function getValue(name){
     const budgetB = getValue('budgetB')
     const ada = getValue('ada')
     const description = getValue('description')
-    const pool = getValue('pool')
+    const pool = poolEl.innerText
     const idea = getValue('ideaScale')
     const xrate = getValue('xrate')
     const fund = getValue('fund')
