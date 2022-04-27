@@ -1,6 +1,7 @@
 let poolEl = document.getElementById("pool")
 let projectEl = document.getElementById("project")
 let fundEl = document.getElementById("fund")
+let walletEl = document.getElementById("wallet").value
 let saveEl = document.getElementById("save-el")
 let saveEl2 = document.getElementById("save-el2")
 let balEl = document.getElementById("bal-el")
@@ -16,9 +17,9 @@ let t1El = document.getElementById("t1")
 const bi = []
 var b1 = 0
 let b2 = 0
-let b3 = 291.032265 * 6 + 256.962177 + 34.252353 + 223.184 * 7
-let b4 = 555.555 + 555.555 + 555.555
-let b5 = 250.183 * 5
+let b3 = 0
+let b4 = 0
+let b5 = 0
 
 function getJSON(url) {
   return new Promise( (resolve, reject) => {
@@ -73,7 +74,7 @@ function getJSON(url) {
     // Send the request to the server
     xhr.send();
 console.log(fundEl.innerText);
-console.log(bi);
+
 let percEl = 0
 let percEl2 = 0
 let count = 0
@@ -81,11 +82,12 @@ let prop = 37500.00
 let ucosts = 0    // aggregated unexpected cost expenses
 let unCost = 0  //amount allocated 2500 USD
 
-const outgoing = b1 + b2 + b3 + b4 + b5 + ucosts
 
+console.log(walletEl);
 const getBalance = () => {
-    axios.get('https://pool.pm/wallet/addr1qywhw76pn043rfu53eujfy7t6f52aef565z5jjrzx9kwva3tdl56g3r0jsp6zcdfzf4l6ysdz9u232z5mp28swllseesste93q')
+    axios.get(`https://pool.pm/wallet/${walletEl}`)
     .then(response => {
+      let outgoing = b1 + b2 + b3 + b4 + b5 + ucosts
      const balance = (response.data.lovelaces/1000000+outgoing).toFixed(2);
      const wBalance = (response.data.lovelaces/1000000).toFixed(2);
      const uCost = (unCost/5).toFixed(2);
