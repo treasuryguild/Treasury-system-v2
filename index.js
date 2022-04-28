@@ -1,7 +1,7 @@
     // Create new XMLHttpRequest object
     const xhr = new XMLHttpRequest();
     const url = `https://api.github.com/repos/treasuryguild/Treasury-system-v2/contents/webpage/transaction-files`;
-    // Replace -username- with your GitHub username, -repo- with the repository name, and then :path with a path to the file or folder you want to get the content of (leave blank to ge all files of the repository)
+    // Replace -username- with your GitHub username, -repo- with the repository name
 
     xhr.open('GET', url, true);
 
