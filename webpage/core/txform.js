@@ -55,7 +55,7 @@ function getJSON(url) {
       const data = JSON.parse(this.response);
       for (let i in data) {
         t[i] = (data[i].name)
-        console.log(t[0]); 
+        console.log(t[i]); 
         const xhr = new XMLHttpRequest();
         const url = `https://api.github.com/repos/treasuryguild/Treasury-system-v2/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}/${t[i]}`;
         // Replace -username- with your GitHub username, -repo- with the repository name, and then :path with a path to the file or folder you want to get the content of (leave blank to ge all files of the repository)
@@ -72,7 +72,8 @@ function getJSON(url) {
                 b1 = b1 + parseInt(data2.ada)
                 bi.push(data2.ada);
                 console.log(data2);
-                
+                console.log(data2.budget);
+                console.log(b1);
                 // => Data from github!
               }).catch( error => {
                 throw error; // Oh no, something bad happened!
@@ -119,7 +120,7 @@ function getJSON(url) {
     xhr.send();
 */
 console.log(fundEl.innerText);
-console.log(document.getElementById("budgetB")[2].value);
+console.log(document.getElementById("budgetB")[3].value);
 
 let percEl = 0
 let percEl2 = 0
