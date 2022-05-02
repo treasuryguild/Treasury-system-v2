@@ -1,6 +1,8 @@
 let poolEl = document.getElementById("pool")
 let projectEl = document.getElementById("project")
+let orgEl = document.getElementById("org").value
 let fundEl = document.getElementById("fund")
+let repoEl = document.getElementById("repo").value
 let walletEl = document.getElementById("wallet").value
 let saveEl = document.getElementById("save-el")
 let saveEl2 = document.getElementById("save-el2")
@@ -46,79 +48,38 @@ function getJSON(url) {
     xhr.send();
   });
 }
-
     const xhr = new XMLHttpRequest();
-    const url = `https://api.github.com/repos/treasuryguild/Treasury-system-v2/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}`;
-    
+    const url = `https://api.github.com/repos/${orgEl}/${repoEl}/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}`;   
     xhr.open('GET', url, true);
     xhr.onload = function() {
       const data = JSON.parse(this.response);
       for (let i in data) {
-        t[i] = (data[i].name)
-        console.log(t[i]); 
+        t[i] = (data[i].name);  // t[i] is used in the next const url below to get the last folder name
         const xhr = new XMLHttpRequest();
-        const url = `https://api.github.com/repos/treasuryguild/Treasury-system-v2/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}/${t[i]}`;
-        // Replace -username- with your GitHub username, -repo- with the repository name, and then :path with a path to the file or folder you want to get the content of (leave blank to ge all files of the repository)
-    
-        xhr.open('GET', url, true);
-    
+        const url = `https://api.github.com/repos/${orgEl}/${repoEl}/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}/${t[i]}`;
+        xhr.open('GET', url, true);   
         xhr.onload = function() {
-            const data = JSON.parse(this.response);
-            
+            const data = JSON.parse(this.response);           
             // Loop over each object in data array
             for (let i in data) {
               getJSON(data[i].download_url)
               .then( data2 => {
-                b1 = b1 + parseInt(data2.ada)
-                bi.push(data2.ada);
-                console.log(data2);
-                console.log(data2.budget);
-                console.log(b1);
+                bi.push(data2);
                 // => Data from github!
               }).catch( error => {
                 throw error; // Oh no, something bad happened!
               });   
             }
-        }
-        
+        }       
         // Send the request to the server
         xhr.send();  
-          // => Data from github!
-        
+          // => Data from github!       
       }
-  }
-  
+  } 
   // Send the request to the server
   xhr.send();
-  
-    // Create new XMLHttpRequest object
-/*    const xhr = new XMLHttpRequest();
-    const url = `https://api.github.com/repos/treasuryguild/Treasury-system-v2/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}/${t1El.innerText}`;
-    // Replace -username- with your GitHub username, -repo- with the repository name, and then :path with a path to the file or folder you want to get the content of (leave blank to ge all files of the repository)
+  console.log(bi);
 
-    xhr.open('GET', url, true);
-
-    xhr.onload = function() {
-        const data = JSON.parse(this.response);
-        
-        // Loop over each object in data array
-        for (let i in data) {
-          getJSON(data[i].download_url)
-          .then( data2 => {
-            b1 = b1 + parseInt(data2.ada)
-            bi.push(data2.ada);
-            console.log(data2);
-            
-            // => Data from github!
-          }).catch( error => {
-            throw error; // Oh no, something bad happened!
-          });   
-        }
-    }
-    
-    // Send the request to the server
-    xhr.send();
-*/
 console.log(fundEl.innerText);
 console.log(document.getElementById("budgetB")[3].value);
 
@@ -183,8 +144,8 @@ function getValue(name){
     const pool = poolEl.innerText
     const idea = getValue('ideaScale')
     const xrate = getValue('xrate')
-    const fund = getValue('fund')
-    const project = getValue('project')
+    const fund = fundEl.innerText
+    const project = projectEl.innerText
     
     //generate a filename
     const filename = new Date().getTime().toString() + '-' + name.replace(/\s/g, '-') + ".json"
@@ -222,7 +183,7 @@ function getValue(name){
       return answer;
     }
     //Open in a new tab
-  window.open("https://github.com/treasuryguild/Treasury-system-v2/new/main/Transactions/" + project.replace(/\s/g, '-') + "/" + githubQueryLink(pool) + githubQueryLink2(budgetB) + "new?value=" + encodedFileText +"&filename=" + filename);
+  window.open(`https://github.com/${orgEl}/${repoEl}/new/main/Transactions/` + project.replace(/\s/g, '-') + "/" + githubQueryLink(pool) + githubQueryLink2(budgetB) + "new?value=" + encodedFileText +"&filename=" + filename);
     
   }
 
