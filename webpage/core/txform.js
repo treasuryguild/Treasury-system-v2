@@ -12,8 +12,10 @@ let items = document.getElementsByClassName('title');
 let budgetItems = [].map.call(items, item => item.textContent.replace(/\s/g, '-'));
 let items2 = document.getElementsByClassName('value');
 let budgetItemsId = [].map.call(items2, item => item.id);
+let items3 = document.getElementsByClassName('bb');
+let budgetItemsVal = [].map.call(items3, item => item.id);
 console.log(budgetItemsId);
-console.log(budgetItems);
+console.log(budgetItemsVal);
 
 var object = Object.assign({}, ...Object.entries({...budgetItems}).map(([a,b]) => ({ [b]: 0 })))
 object.outgoing = 0;
