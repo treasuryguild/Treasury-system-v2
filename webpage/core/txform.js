@@ -8,21 +8,24 @@ let saveEl = document.getElementById("save-el")
 let saveEl2 = document.getElementById("save-el2")
 let balEl = document.getElementById("bal-el")
 
-let b1El = document.getElementById("b1")
-let b2El = document.getElementById("b2")
-let b3El = document.getElementById("b3")
-let b4El = document.getElementById("b4")
-let b5El = document.getElementById("b5")
+let items = document.getElementsByClassName('title');
+let budgetItems = [].map.call(items, item => item.textContent.replace(/\s/g, '-'));
+let items2 = document.getElementsByClassName('value');
+let budgetItemsId = [].map.call(items2, item => item.id);
+console.log(budgetItemsId);
+console.log(budgetItems);
+
+var object = Object.assign({}, ...Object.entries({...budgetItems}).map(([a,b]) => ({ [b]: 0 })))
+object.outgoing = 0;
+object["Proposal-Funds"] = parseInt(balEl.textContent.replace( /^\D+/g, ''));
 
 let t1El = document.getElementById("t1")
 
 const bi = []
 const t = []
-let b1 = 0
-let b2 = 0
-let b3 = 0
-let b4 = 0
-let b5 = 0
+const bal = []
+const b = []
+const x = []
 
 function getJSON(url) {
   return new Promise( (resolve, reject) => {
@@ -54,7 +57,7 @@ function getJSON(url) {
     xhr.onload = function() {
       const data = JSON.parse(this.response);
       for (let i in data) {
-        t[i] = (data[i].name);  // t[i] is used in the next const url below to get the last folder name
+        t[i] = (data[i].name).replace(/\s/g, '-');  // t[i] is used in the next const url below to get the last folder name
         const xhr = new XMLHttpRequest();
         const url = `https://api.github.com/repos/${orgEl}/${repoEl}/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}/${t[i]}`;
         xhr.open('GET', url, true);   
@@ -79,6 +82,7 @@ function getJSON(url) {
   // Send the request to the server
   xhr.send();
   console.log(bi);
+  console.log(t);
 
 console.log(fundEl.innerText);
 console.log(document.getElementById("budgetB")[3].value);
@@ -86,49 +90,46 @@ console.log(document.getElementById("budgetB")[3].value);
 let percEl = 0
 let percEl2 = 0
 let count = 0
-let prop = 37500.00  
-let ucosts = 0    // aggregated unexpected cost expenses
-let unCost = 0  //amount 
-/*
-console.log(walletEl);
+
 const getBalance = () => {
     axios.get(`https://pool.pm/wallet/${walletEl}`)
     .then(response => {
-     let outgoing = b1 + b2 + b3 + b4 + b5 + ucosts
-     const balance = (response.data.lovelaces/1000000+outgoing).toFixed(2);
-     const wBalance = (response.data.lovelaces/1000000).toFixed(2);
-     const uCost = (unCost/5).toFixed(2);
-     console.log(balance);
-     saveEl.textContent = "₳ " + balance
-     saveEl2.textContent = "₳ " + wBalance
-     b1El.textContent = "₳ " + (balance/5 - b1 - uCost).toFixed(2)
-     b2El.textContent = "₳ " + (balance/5 - b2 - uCost).toFixed(2)
-     b3El.textContent = "₳ " + (balance/5 - b3 - uCost).toFixed(2)
-     b4El.textContent = "₳ " + (balance/5 - b4 - uCost).toFixed(2)
-     b5El.textContent = "₳ " + (balance/5 - b5 - uCost).toFixed(2)
-     balEl.textContent = "₳ " + prop.toFixed(2)
-     let perc = balance/37500*100
-     let perc2 = wBalance/37500*100
-     percEl2 = (perc2).toFixed(2)
-     percEl = (perc).toFixed(2)
-     b1El2 = ((balance/5 - b1 - uCost)/(balance/5 - uCost)*100).toFixed(2)
-     b2El2 = ((balance/5 - b2 - uCost)/(balance/5 - uCost)*100).toFixed(2)
-     b3El2 = ((balance/5 - b3 - uCost)/(balance/5 - uCost)*100).toFixed(2)
-     b4El2 = ((balance/5 - b4 - uCost)/(balance/5 - uCost)*100).toFixed(2)
-     b5El2 = ((balance/5 - b5 - uCost)/(balance/5 - uCost)*100).toFixed(2)
-     document.getElementById("save-el").style.width = percEl+"%"
-     document.getElementById("save-el2").style.width = percEl2+"%"
-     document.getElementById("b1").style.width = b1El2+"%"
-     document.getElementById("b2").style.width = b2El2+"%"
-     document.getElementById("b3").style.width = b3El2+"%"
-     document.getElementById("b4").style.width = b4El2+"%"
-     document.getElementById("b5").style.width = b5El2+"%"
-   })
+      for (let i in bi) {
+        y = bi[i].budget.replace(/\s/g, '-')
+        for (let j in t) {    
+          if ( y == t[j]) {
+            object[y] = object[y] + (parseInt(bi[i].ada));
+            object.outgoing = object.outgoing + (parseInt(bi[i].ada));
+          }        
+        }
+      }
+      let outgoing = object.outgoing
+      const balance = (response.data.lovelaces/1000000+outgoing).toFixed(2);
+      const wBalance = (response.data.lovelaces/1000000).toFixed(2);
+      console.log(balance);
+      saveEl.textContent = "₳ " + balance
+      saveEl2.textContent = "₳ " + wBalance
+      let perc = balance/object["Proposal-Funds"]*100
+      let perc2 = wBalance/object["Proposal-Funds"]*100
+      percEl2 = (perc2).toFixed(2)
+      percEl = (perc).toFixed(2)
+      document.getElementById("save-el").style.width = percEl+"%"
+      document.getElementById("save-el2").style.width = percEl2+"%"
+      balEl.textContent = "₳ " + object["Proposal-Funds"].toFixed(2)
+      for (let i in budgetItemsId) {
+        if (i > 2) {
+        b[i] = document.getElementById(budgetItemsId[i])
+        b[i].textContent = "₳ " + (balance/(budgetItemsId.length-2) - object[budgetItems[i]]).toFixed(2)
+        x[i] = ((balance/(budgetItemsId.length-2) - object[budgetItems[i]])/(balance/(budgetItemsId.length-2))*100).toFixed(2)
+        document.getElementById(`${budgetItemsId[i]}`).style.width = x[i]+"%"
+        }
+      }
+    })
     .catch(error => console.error(error));
-   };
+  };
 
 getBalance();
-*/
+console.log(object)
 
 //Helper function to get value by id
 function getValue(name){
