@@ -5,53 +5,183 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../core/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
 <body>
     <div class='cardstop'>
-        Test
+        Test Transaction Form
     </div>
     <div class='main'>
         <button onclick="location.href='../../index.html';"><a>Home</a></button>
         <button onclick="location.href='../core/newproposal.html';"><a>New Proposal</a></button>
     </div>
     <article>  
-        <div class='main'> 
-        
+        <div class='main'>
+        <form class="testing">
+            <div class="section_widgets">
+                <div class="graph_widget">
+                <a name="circle-groups"></a>
+                <h3 class="graph_title">Funds</h3>
+                <div class="graph">
+                <div class="graph_item blue">
+                <span class="graph_item_title">
+                <span class="title">Proposal Funds</span>
+                </span>
+                <span class="graph_item_value">
+                <span class="value" id="bal-el" style="width: 100%;">USD 20150</span>
+                </span>
+                </div>
+                <div class="graph_item blue">
+                <span class="graph_item_title">
+                <span class="title">Incoming</span>
+                </span>
+                <span class="graph_item_value">
+                <span class="value" id="save-el"></span>               
+                </span>
+                </div>
+                <div class="graph_item blue">
+                <span class="graph_item_title">
+                <span class="title">Wallet Balance</span>
+                </span>
+                <span class="graph_item_value">
+                <span class="value" id="save-el2"></span>
+                </span>
+                </div>
+                <br>
+                <h3 class="graph_title">Budget Items</h3>
+                <div class="graph_item green">
+                <span class="graph_item_title">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20General%20ADA%20Holders%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="title" id="t1">Meetings</span>
+                </a>
+                </span>
+                <span class="graph_item_value">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20General%20ADA%20Holders%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="value" id="b1"></span>
+                </a>
+                </span>
+                </div>
+                <div class="graph_item green">
+                <span class="graph_item_title">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Community%20Advisors%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="title" id="t2">Comm-Org Tools</span>
+                </a>
+                </span>
+                <span class="graph_item_value">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Community%20Advisors%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="value" id="b2"></span>
+                </a>
+                </span>
+                </div>
+                <div class="graph_item green">
+                <span class="graph_item_title">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Funded%20Proposers%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="title" id="t3">Surveys</span>
+                </a>
+                </span>
+                <span class="graph_item_value">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Funded%20Proposers%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="value" id="b3"></span>
+                </a>
+                </span>
+                </div>
+                <div class="graph_item green">
+                <span class="graph_item_title">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Toolmakers%20and%20Maintainers%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="title" id="t4">Retrospectives</span>
+                </a>
+                </span>
+                <span class="graph_item_value">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Toolmakers%20and%20Maintainers%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="value" id="b4"></span>
+                </a>
+                </span>
+                </div>
+                <div class="graph_item green">
+                <span class="graph_item_title">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Stake%20Pool%20Operators%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="title" id="t5">Reports</span>
+                </a>
+                </span>
+                <span class="graph_item_value">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Stake%20Pool%20Operators%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="value" id="b5"></span>
+                </a>
+                </span>
+                </div>
+                <div class="graph_item green">
+                <span class="graph_item_title">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Stake%20Pool%20Operators%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="title" id="t6">Proposals</span>
+                </a>
+                </span>
+                <span class="graph_item_value">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Stake%20Pool%20Operators%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="value" id="b6"></span>
+                </a>
+                </span>
+                </div>
+                <div class="graph_item green">
+                <span class="graph_item_title">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Stake%20Pool%20Operators%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="title" id="t7">Town Hall Slides</span>
+                </a>
+                </span>
+                <span class="graph_item_value">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Stake%20Pool%20Operators%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="value" id="b7"></span>
+                </a>
+                </span>
+                </div>
+                <div class="graph_item green">
+                <span class="graph_item_title">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Stake%20Pool%20Operators%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="title" id="t8">Meeting Minutes</span>
+                </a>
+                </span>
+                <span class="graph_item_value">
+                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Stake%20Pool%20Operators%22%20created%3A%3E2022-03-01" target="_blank">
+                <span class="value" id="b8"></span>
+                </a>
+                </span>
+                </div>
+            </div>
+            </div>
+            </form>
+        </div> 
         <form class='testing'>
             <div class = 'form'>
-                <select class = 'dropd2' id = 'fund'>
-                    <option value='Fund7' selected>Fund7</option>
+                <select class = 'dropd2' id = 'repo'>
+                    <option value='Treasury-system-v2' id="fund" selected>Fund7</option> 
+                </select> <!--- These values are just stored variables for the javascript-->
+            </div>
+            <div class = 'form'>
+                <select class = 'dropd2' id = 'org'>
+                    <option value='treasuryguild' id="project"selected>Community Governance Oversight</option>
                 </select>
             </div>
             <div class = 'form'>
-                <select class = 'dropd2' id = 'project'>
-                    <option value='Community Governance Oversight' selected>Community Governance Oversight</option>
-                </select>
-            </div>
-            <div class = 'form'>
-                <select class = 'dropd2' id = 'pool'>
-                    <option value='Community Governance Oversight' selected>Community Governance Oversight</option>
-                    <option value='Catalyst Audit Circle'>Catalyst Audit Circle</option>
+                <select class = 'dropd2' id = 'wallet'>
+                    <option value='addr1qy8ankx6gyvw8fnymjz4aat5yd3dq37mtnk0cqpafxu67l7ksqdc0rsz56xjuka8758sestaqclj66gk7d86tf807vps2dstvx' id="pool"selected>Community Governance Oversight</option>
                 </select>
             </div>
             <div class = 'form'>
                 <select class = 'dropd2' id = 'ideaScale'>
                     <option value='https://cardano.ideascale.com/c/idea/383517' selected>https://cardano.ideascale.com/c/idea/383517</option>
-                    <option value='https://cardano.ideascale.com/c/idea/381354'>https://cardano.ideascale.com/c/idea/381354</option>
                 </select>
             </div>
             <div class = 'form'>
                 <select class = 'dropd' id = 'budgetB'>
-                    <option value='Incoming IOG'>Incoming IOG</option>
-                    <option value='Meetings' selected>Meetings</option>
-                    <option value='Comm-Org Tools'>Comm-Org Tools</option>
-                    <option value='Surveys'>Surveys</option>
-                    <option value='Retrospectives'>Retrospectives</option>
-                    <option value='Reports'>Reports</option>
-                    <option value='Proposal'>Proposal</option>
-                    <option value='Town Hall Slides'>Town Hall Slides</option>
-                    <option value='Meeting Minutes'>Meeting Minutes</option>
+                    <option class="bb" id="0" value='Incoming'>Incoming</option>
+                    <option class="bb" id="8000" value='Meetings' selected>Meetings</option>
+                    <option class="bb" id="1000" value='Comm-Org Tools'>Comm-Org Tools</option>
+                    <option class="bb" id="4800" value='Surveys'>Surveys</option>
+                    <option class="bb" id="2400" value='Retrospectives'>Retrospectives</option>
+                    <option class="bb" id="2400" value='Reports'>Reports</option>
+                    <option class="bb" id="500" value='Proposal'>Proposal</option>
+                    <option class="bb" id="450" value='Town Hall Slides'>Town Hall Slides</option>
+                    <option class="bb" id="600" value='Meeting Minutes'>Meeting Minutes</option>
                 </select>
             </div>
             <div class = 'form'>

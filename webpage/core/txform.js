@@ -13,14 +13,17 @@ let budgetItems = [].map.call(items, item => item.textContent.replace(/\s/g, '-'
 let items2 = document.getElementsByClassName('value');
 let budgetItemsId = [].map.call(items2, item => item.id);
 let items3 = document.getElementsByClassName('bb');
-let budgetItemsVal = [].map.call(items3, item => item.id);
+let budgetItemsVal = [].map.call(items3, item => parseInt(item.id));
 console.log(budgetItemsId);
 console.log(budgetItemsVal);
 
 var object = Object.assign({}, ...Object.entries({...budgetItems}).map(([a,b]) => ({ [b]: 0 })))
+var object2 = Object.assign({}, ...Object.entries({...budgetItems}).map(([a,b]) => ({ [b]: budgetItemsVal[a-2] })))
 object.outgoing = 0;
 object["Proposal-Funds"] = parseInt(balEl.textContent.replace( /^\D+/g, ''));
-
+object2["Proposal-Funds"] = parseInt(balEl.textContent.replace( /^\D+/g, ''));
+object2["Incoming"] = 0;
+console.log(object2);
 let t1El = document.getElementById("t1")
 
 const bi = []
@@ -105,8 +108,9 @@ const getBalance = () => {
           }        
         }
       }
-      let outgoing = object.outgoing
-      const balance = (response.data.lovelaces/1000000+outgoing).toFixed(2);
+      object.outgoing =  object.outgoing - object["Incoming"];
+      // let outgoing = object.outgoing;
+      const balance = object["Incoming"].toFixed(2); //(response.data.lovelaces/1000000+outgoing).toFixed(2);
       const wBalance = (response.data.lovelaces/1000000).toFixed(2);
       console.log(balance);
       saveEl.textContent = "₳ " + balance
@@ -117,12 +121,12 @@ const getBalance = () => {
       percEl = (perc).toFixed(2)
       document.getElementById("save-el").style.width = percEl+"%"
       document.getElementById("save-el2").style.width = percEl2+"%"
-      balEl.textContent = "₳ " + object["Proposal-Funds"].toFixed(2)
+      balEl.textContent = "USD " + object["Proposal-Funds"].toFixed(2)
       for (let i in budgetItemsId) {
         if (i > 2) {
         b[i] = document.getElementById(budgetItemsId[i])
-        b[i].textContent = "₳ " + (balance/(budgetItemsId.length-2) - object[budgetItems[i]]).toFixed(2)
-        x[i] = ((balance/(budgetItemsId.length-2) - object[budgetItems[i]])/(balance/(budgetItemsId.length-2))*100).toFixed(2)
+        x[i] = (object[budgetItems[i]]/object2[budgetItems[i]]*100).toFixed(2)
+        b[i].textContent = "₳ " + (object[budgetItems[i]]).toFixed(2)   
         document.getElementById(`${budgetItemsId[i]}`).style.width = x[i]+"%"
         }
       }
