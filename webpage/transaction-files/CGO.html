@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../core/style.css" rel="stylesheet">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -22,7 +21,7 @@
             <div class="section_widgets">
                 <div class="graph_widget">
                 <a name="circle-groups"></a>
-                <h3 class="graph_title">Funds - Incoming</h3>
+                <h3 class="graph_title">Funds</h3>
                 <div class="graph">
                 <div class="graph_item blue">
                 <span class="graph_item_title">
@@ -49,27 +48,27 @@
                 </span>
                 </div>
                 <br>
-                <h3 class="graph_title">Budget Items - Outgoing</h3>
+                <h3 class="graph_title">Budget Items</h3>
                 <div class="graph_item green">
                 <span class="graph_item_title">
-                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20General%20ADA%20Holders%22%20created%3A%3E2022-03-01" target="_blank">
+                <a href="https://github.com/treasuryguild/Treasury-system-v2/tree/main/Transactions/Community-Governance-Oversight/Fund7/Community-Governance-Oversight/Meetings" target="_blank">
                 <span class="title" id="t1">Meetings</span>
                 </a>
                 </span>
                 <span class="graph_item_value">
-                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20General%20ADA%20Holders%22%20created%3A%3E2022-03-01" target="_blank">
+                <a href="https://github.com/treasuryguild/Treasury-system-v2/tree/main/Transactions/Community-Governance-Oversight/Fund7/Community-Governance-Oversight/Meetings" target="_blank">
                 <span class="value" id="b1"></span>
                 </a>
                 </span>
                 </div>
                 <div class="graph_item green">
                 <span class="graph_item_title">
-                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Community%20Advisors%22%20created%3A%3E2022-03-01" target="_blank">
+                <a href="https://github.com/treasuryguild/Treasury-system-v2/tree/main/Transactions/Community-Governance-Oversight/Fund7/Community-Governance-Oversight/Comm-Org-Tools" target="_blank">
                 <span class="title" id="t2">Comm-Org Tools</span>
                 </a>
                 </span>
                 <span class="graph_item_value">
-                <a href="https://github.com/search?q=project%3Acctreasury%2FTreasury-system%2F3%20is%3Aissue%20label%3A%22Funding%20Mechanism%20-%20Community%20Advisors%22%20created%3A%3E2022-03-01" target="_blank">
+                <a href="https://github.com/treasuryguild/Treasury-system-v2/tree/main/Transactions/Community-Governance-Oversight/Fund7/Community-Governance-Oversight/Comm-Org-Tools" target="_blank">
                 <span class="value" id="b2"></span>
                 </a>
                 </span>
@@ -172,6 +171,7 @@
                 </select>
             </div>
             <div class = 'form'>
+                <label class = 'custom-field2' for='budgetB'>
                 <select class = 'dropd' id = 'budgetB'>
                     <option class="bb" id="0" value='Incoming'>Incoming</option>
                     <option class="bb" id="8000" value='Meetings' selected>Meetings</option>
@@ -183,6 +183,8 @@
                     <option class="bb" id="450" value='Town Hall Slides'>Town Hall Slides</option>
                     <option class="bb" id="600" value='Meeting Minutes'>Meeting Minutes</option>
                 </select>
+                <span class="disco2">Budget Item / Incoming</span>
+                </label>
             </div>
             <div class = 'form'>
                 <label class = 'custom-field' for='name'> 

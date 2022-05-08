@@ -96,6 +96,12 @@ body {
     padding-top:20px;
     margin-bottom: 2px;
   }
+  .custom-field2 {
+    position: relative;
+    font-size: 14px;
+    padding-top:0px;
+    margin-bottom: 0px;
+  }
   
   .custom-field input {
     border: none;
@@ -127,6 +133,13 @@ body {
     position: absolute;
     right: 12px;
     top: 6px;
+    font-size: 10px;
+  }
+
+  .disco2 {
+    position: absolute;
+    right: 28px;
+    top: 1px;
     font-size: 10px;
   }
   
@@ -163,14 +176,14 @@ body {
     border: 1px solid var(--bg-accent);
     cursor: pointer;
     border-radius: 3px;
-    margin: 16px;
+    margin: 14px;
     margin-bottom: 0px;
     width: 250px
   }
 
   .dropd2 {
     padding: 8px, 12px;
-    padding-block: 3px;
+    padding-block: 0px;
     padding-inline: 12px;
     color: #aaa;
     background-color: var(--bg);
@@ -178,7 +191,7 @@ body {
     cursor: pointer;
     border-radius: 3px;
     margin: 5px;
-    width: 250px
+    width: 250px;
   }
   
   .descr {
