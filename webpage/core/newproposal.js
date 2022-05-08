@@ -1,60 +1,41 @@
+let orgEl = document.getElementById("org").value
+let repoEl = document.getElementById("repo").value
+let budgetB = document.getElementById("budgetB").value
 //Helper function to get value by id
 function getValue(name){
     return document.getElementById(name).value
   }
-  
+
   function validateSubmission(){
     //save all the input values
-    const name = getValue('name')
-    const budgetB = getValue('budgetB')
-    const ada = getValue('ada')
-    const description = getValue('description')
-    const pool = getValue('pool')
-    const idea = getValue('ideaScale')
-    const xrate = getValue('xrate')
     const fund = getValue('fund')
     const project = getValue('project')
-    
+    const proposal = getValue('proposal')
+    const ideascale = getValue('ideascale')
+    const tfunds = getValue('total-funds-requested')   
     //generate a filename
-    const filename = new Date().getTime().toString() + '-' + name.replace(/\s/g, '-') + ".json"
-    
-    
+    const filename = proposal.replace(/\s/g, '-') + ".html"  
     //Generate a string mimicing the file structure
     //Indentation is important here
-    
-    //Generate a string mimicing the file structure
-    //Indentation is important here
-    let fileText = `{
-  "id" : "${new Date().getTime().toString()}",
-  "date": "${new Date().toUTCString()}",
-  "fund": "${fund}",
-  "project": "${project}",
-  "proposal": "${pool}",
-  "ideascale": "${idea}",
-  "budget": "${budgetB}",
-  "ada": "${ada}",
-  "exchange-rate": "${xrate} USD per ADA",
-  "name": "${name}",
-  "txid": "",
-  "description": "${description}"
-}
+    let fileText = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../core/style.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
 `
     
     //Encode string to URI format
     const encodedFileText = encodeURIComponent(fileText)
-  
-    //Generate a github link with query parameter
     
-    function githubQueryLink(pool) {
-      var answer = fund + "/" + pool.replace(/\s/g, '-') + "/";
-      return answer;
-    }
-
-    function githubQueryLink2(budgetB) {
-      var answer = budgetB.replace(/\s/g, '-') + "/";
-      return answer;
-    }
     //Open in a new tab
-  window.open("https://github.com/treasuryguild/Treasury-system-v2/new/main/Transactions/" + project.replace(/\s/g, '-') + "/" + githubQueryLink(pool) + githubQueryLink2(budgetB) + "new?value=" + encodedFileText +"&filename=" + filename);
+  window.open(`https://github.com/${orgEl}/${repoEl}/new/main/webpage/transaction-files/` + "new?value=" + encodedFileText +"&filename=" + filename);
     
   }

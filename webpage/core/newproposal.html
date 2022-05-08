@@ -16,95 +16,97 @@
     </div>
     <article>  
         <div class='main'> 
-        
         <form class='testing'>
             <div class = 'form'>
-                <select class = 'dropd2' id = 'fund'>
-                    <option value='Fund7' selected>Fund7</option>
-                </select>
+                <select class = 'dropd2' id = 'org'>
+                    <option value='treasuryguild' id="org" selected>treasuryguild</option> 
+                </select> <!--- These values are just stored variables for the javascript-->
             </div>
             <div class = 'form'>
-                <select class = 'dropd2' id = 'project'>
-                    <option value='Community Governance Oversight' selected>Community Governance Oversight</option>
-                </select>
+                <select class = 'dropd2' id = 'repo'>
+                    <option value='Treasury-system-v2' id="repo" selected>Treasury-system-v2</option> 
+                </select> <!--- These values are just stored variables for the javascript-->
             </div>
             <div class = 'form'>
-                <select class = 'dropd2' id = 'pool'>
-                    <option value='Community Governance Oversight' selected>Community Governance Oversight</option>
-                    <option value='Catalyst Audit Circle'>Catalyst Audit Circle</option>
-                </select>
-            </div>
-            <div class = 'form'>
-                <select class = 'dropd2' id = 'ideaScale'>
-                    <option value='https://cardano.ideascale.com/c/idea/383517' selected>https://cardano.ideascale.com/c/idea/383517</option>
-                    <option value='https://cardano.ideascale.com/c/idea/381354'>https://cardano.ideascale.com/c/idea/381354</option>
-                </select>
-            </div>
-            <div class = 'form'>
-                <select class = 'dropd' id = 'budgetB'>
-                    <option value='Incoming IOG'>Incoming IOG</option>
-                    <option value='Meetings' selected>Meetings</option>
-                    <option value='Comm-Org Tools'>Comm-Org Tools</option>
-                    <option value='Surveys'>Surveys</option>
-                    <option value='Retrospectives'>Retrospectives</option>
-                    <option value='Reports'>Reports</option>
-                    <option value='Proposal'>Proposal</option>
-                    <option value='Town Hall Slides'>Town Hall Slides</option>
-                    <option value='Meeting Minutes'>Meeting Minutes</option>
-                </select>
-            </div>
-            <div class = 'form'>
-                <label class = 'custom-field' for='name'> 
+                <label class = 'custom-field' for='fund'> 
                     <input
                         type='text'
-                        id='name'
-                        name='name'
+                        id='fund'
+                        name='fund'
                         autoComplete="off"
                         required
                     />
-                    <span class="placeholder">Name</span>
-                    <span class="disco">Beneficiary</span>
-                    </label>
-            </div>
-            <div class = 'form'>
-                <label class = 'custom-field' for='xrate'> 
-                    <input
-                        type='text'
-                        id='xrate'
-                        name='xrate'
-                        autoComplete="off"
-                        required
-                    />
-                    <span class="placeholder">ex. 0.92</span>
-                    <span class="disco">USD/ADA Exchange Rate</span>
-                    </label>
-            </div>
-            <div class='form'>
-                <label class = 'custom-field' for='ada'> 
-                <input
-                    type='text'
-                    id='ada'
-                    name='ada'
-                    autoComplete="off"
-                    required
-                />
-                <span class="placeholder">ADA</span>
-                <span class="disco">Amount</span>
+                    <span class="placeholder">ex. Fund 7</span>
+                    <span class="disco">Fund</span>
                 </label>
             </div>
-            <div class='form'>
-                <label  for='description'>
-                <textarea class = 'descr'
-                    type='text'
-                    id='description'
-                    name='description'
-                    placeholder="Description"
-                    autoComplete="off"
-                    required
-                ></textarea>
-                <!--<span class="placeholder">Description</span>
-                <span class="disco">Description / Extra comments</span>
-                </label> -->
+            <div class = 'form'>
+                <label class = 'custom-field' for='project'> 
+                    <input
+                        type='text'
+                        id='project'
+                        name='project'
+                        autoComplete="off"
+                        required
+                    />
+                    <span class="placeholder">Project</span>
+                    <span class="disco">Project</span>
+                </label>
+            </div>
+            <div class = 'form'>
+                <label class = 'custom-field' for='proposal'> 
+                    <input
+                        type='text'
+                        id='proposal'
+                        name='proposal'
+                        autoComplete="off"
+                        required
+                    />
+                    <span class="placeholder">Proposal</span>
+                    <span class="disco">Proposal</span>
+                </label>
+            </div>
+            <div class = 'form'>
+                <label class = 'custom-field' for='ideascale'> 
+                    <input
+                        type='text'
+                        id='ideascale'
+                        name='ideascale'
+                        autoComplete="off"
+                        required
+                    />
+                    <span class="placeholder">Ideascale link</span>
+                    <span class="disco">Ideascale</span>
+                </label>
+            </div>
+            <div class = 'form'>
+                <label class = 'custom-field' for='total-funds-requested'> 
+                    <input
+                        type='text'
+                        id='total-funds-requested'
+                        name='total-funds-requested'
+                        autoComplete="off"
+                        required
+                    />
+                    <span class="placeholder">ex. 50000 ADA</span>
+                    <span class="disco">Total Funds Requested</span>
+                </label>
+            </div>
+            <div class = 'form'>
+                <label class = 'custom-field2' for='budgetB'>
+                <select class = 'dropd' id = 'budgetB'>
+                    <option class="bb" id="0" value='Incoming'>Incoming</option>
+                    <option class="bb" id="8000" value='Meetings' selected>Meetings</option>
+                    <option class="bb" id="1000" value='Comm-Org Tools'>Comm-Org Tools</option>
+                    <option class="bb" id="4800" value='Surveys'>Surveys</option>
+                    <option class="bb" id="2400" value='Retrospectives'>Retrospectives</option>
+                    <option class="bb" id="2400" value='Reports'>Reports</option>
+                    <option class="bb" id="500" value='Proposal'>Proposal</option>
+                    <option class="bb" id="450" value='Town Hall Slides'>Town Hall Slides</option>
+                    <option class="bb" id="600" value='Meeting Minutes'>Meeting Minutes</option>
+                </select>
+                <span class="disco2">Budget Item / Incoming</span>
+                </label>
             </div>
             <div class='form'>
                 <button onclick="validateSubmission();" class ='calc'>
