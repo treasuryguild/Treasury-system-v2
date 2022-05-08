@@ -56,18 +56,15 @@ function getJSON(url) {
     xhr.send();
   });
 }
-    const xhr = new XMLHttpRequest();
+    
     const url = `https://api.github.com/repos/${orgEl}/${repoEl}/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}`;   
-    xhr.open('GET', url, true);
-    xhr.onload = function() {
-      const data = JSON.parse(this.response);
+    getJSON(url)
+              .then( data => {
       for (let i in data) {
         t[i] = (data[i].name).replace(/\s/g, '-');  // t[i] is used in the next const url below to get the last folder name
-        const xhr = new XMLHttpRequest();
-        const url = `https://api.github.com/repos/${orgEl}/${repoEl}/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}/${t[i]}`;
-        xhr.open('GET', url, true);   
-        xhr.onload = function() {
-            const data = JSON.parse(this.response);           
+        const url2 = `https://api.github.com/repos/${orgEl}/${repoEl}/contents/Transactions/${projectEl.innerText.replace(/\s/g, '-')}/${fundEl.innerText}/${poolEl.innerText.replace(/\s/g, '-')}/${t[i]}`;
+        getJSON(url2)
+              .then( data => {           
             // Loop over each object in data array
             for (let i in data) {
               getJSON(data[i].download_url)
@@ -78,14 +75,17 @@ function getJSON(url) {
                 throw error; // Oh no, something bad happened!
               });   
             }
-        }       
-        // Send the request to the server
-        xhr.send();  
+          }).catch( error => {
+            throw error; // Oh no, something bad happened!
+          });       
+        // Send the request to the server  
           // => Data from github!       
       }
-  } 
+    }).catch( error => {
+      throw error; // Oh no, something bad happened!
+    }); 
   // Send the request to the server
-  xhr.send();
+  
   console.log(bi);
   console.log(t);
 
