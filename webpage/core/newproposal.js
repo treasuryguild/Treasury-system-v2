@@ -12,6 +12,7 @@ function getValue(name){
     const project = getValue('project')
     const proposal = getValue('proposal')
     const ideascale = getValue('ideascale')
+    const wallet = getValue('wallet')
     const tfunds = getValue('total-funds-requested')   
     //generate a filename
     const filename = proposal.replace(/\s/g, '-') + ".html"  
@@ -28,6 +29,48 @@ function getValue(name){
     <title>Document</title>
 </head>
 <body>
+  <div class='cardstop'>
+        ${project} Transaction Form
+    </div>
+    <div class='main'>
+        <button onclick="location.href='../../index.html';"><a>Home</a></button>
+        <button onclick="location.href='../core/newproposal.html';"><a>New Proposal</a></button>
+    </div>
+    <article>  
+        <div class='main'>
+        <form class="testing">
+            <div class="section_widgets">
+                <div class="graph_widget">
+                <a name="circle-groups"></a>
+                <h3 class="graph_title">Funds</h3>
+                <div class="graph">
+                <br>
+                <h3 class="graph_title">Budget Items</h3>
+                </div>
+            </div>
+            </form>
+        </div> 
+        <form class='testing'>
+            <div class = 'form'>
+                <select class = 'dropd2' id = 'repo'>
+                    <option value='${repo}' id="fund" selected>${fund}</option> 
+                </select> <!--- These values are just stored variables for the javascript-->
+            </div>
+            <div class = 'form'>
+                <select class = 'dropd2' id = 'org'>
+                    <option value='${org}' id="project"selected>${project}</option>
+                </select>
+            </div>
+            <div class = 'form'>
+                <select class = 'dropd2' id = 'wallet'>
+                    <option value='${wallet}' id="pool"selected>${proposal}</option>
+                </select>
+            </div>
+            <div class = 'form'>
+                <select class = 'dropd2' id = 'ideaScale'>
+                    <option value= '${ideascale}' selected>${ideascale}</option>
+                </select>
+            </div>
 
 </body>
 </html>
